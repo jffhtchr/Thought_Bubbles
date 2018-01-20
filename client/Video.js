@@ -179,9 +179,25 @@ export default class Video extends Component {
                 average = Math.round(average / (blendedData.data.length * 0.25));
                 if (average > 10) {
                     data = {confidence: average, spot: spotzzz[r]};
-                    console.log('HELLO')
+                    if(data.spot.el.id === "right-box"){
+                        console.log("RIGHT BOX")
+                    }
+                    if(data.spot.el.id === "left-box"){
+                        console.log("LEFT BOX")
+                    }
+                    if(data.spot.el.id === "top-box"){
+                        console.log("TOP BOX")
+                    }
                 }
             }
+        }
+
+        function makeRed(id){
+            document.getElementById(`${id}`).style.backgroundColor = 'red';
+        }
+
+        function makeNormal(id){
+            document.getElementById(`${id}`).style.backgroundColor = 'none';
         }
     }
    
