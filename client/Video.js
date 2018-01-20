@@ -20,32 +20,6 @@ export default class Video extends Component {
         var video = document.getElementById("video")
         var content = document.getElementById("video-container");
         var canvases = document.getElementsByClassName("canvas")
-
-        // var resize = function () {
-        //     var ratio = video.width / video.height;
-            
-
-        //     var w = window.innerWidth;
-        //     var h = window.innerHeight-110;
-        //     // console.log('w', w)
-        //     // console.log(window)
-    
-        //     if (content.width > w) {
-        //         content.width = w;
-        //         content.height = (w / ratio);
-        //     } else {
-        //         content.height = h ;
-        //         content.width = (h * ratio);
-        //     }
-
-        //     canvases.width = content.width ;
-        //     canvases.height = content.height;
-        //     content.style.left = (w - content.width / 2);
-        //     content.style.top = (((h-content.height) / 2) + 55);
-        // }
-
-       
-        // resize();
     
         // mirror video
 
@@ -71,8 +45,6 @@ export default class Video extends Component {
                     window.setTimeout(callback, 1000 / 60);
             };
         })();
-
-        
 
         //updates every 60th of a second
         window.onload = function update(){
@@ -158,19 +130,6 @@ export default class Video extends Component {
                             el:     el
                         };
             });
-            // console.log(spotzzz)
-            // $('#hotSpots').children().each(function (i, el) {
-            //     var ratio = $("#canvas-highlights").width() / $('video').width();
-            //     console.log("i:", i)
-            //     console.log('el:', el)
-            //     hotSpots[i] = {
-            //         x:      this.offsetLeft / ratio,
-            //         y:      this.offsetTop / ratio,
-            //         width:  this.scrollWidth / ratio,
-            //         height: this.scrollHeight / ratio,
-            //         el:     el
-            //     };
-            // });
         }
 
         function checkAreas() {
@@ -202,35 +161,8 @@ export default class Video extends Component {
                 }
             ]
 
-            // console.log("*&*&*&*&*&", hotSpots)
             // loop over the note area
             var data;
-            // for (var r=0; r<hotSpots.length; ++r) {
-            //     // var blendedData = contextBlended.getImageData(1/1*r*video.width, 0, video.width, 100);
-            //     var blendedData = contextBlended.getImageData(hotSpots[r].x, hotSpots[r].y, hotSpots[r].width, hotSpots[r].height);
-            //     // console.log("blendedData: ", blendedData)
-            //     var i = 0;
-            //     var average = 0;
-            //     // loop over the pixels
-            //     while (i < (blendedData.data.length * 0.25)) {
-            //         // make an average between the color channel
-            //         average += (blendedData.data[i*4] + blendedData.data[i*4+1] + blendedData.data[i*4+2]) / 3;
-            //         ++i;
-            //     }
-            //     // calculate an average between of the color values of the note area
-            //     average = Math.round(average / (blendedData.data.length * 0.25));
-            //     if (average > 10) {
-            //         data = {confidence: average, spot: hotSpots[r]};
-            //         // makeRed()
-            //         // console.log("data", data)
-            //         // if(data.spot.el.indexOf(hotSpots)){
-            //             // console.log('HELLO')
-            //             // document.getElementById("left-box").style.backgroundColor = "red";
-            //         // }
-            //     }
-            // }
-
-
             for (var r=0; r<spotzzz.length; ++r) {
                 // var blendedData = contextBlended.getImageData(1/1*r*video.width, 0, video.width, 100);
                 var blendedData = contextBlended.getImageData(spotzzz[r].x, spotzzz[r].y, spotzzz[r].width, spotzzz[r].height);
@@ -247,19 +179,10 @@ export default class Video extends Component {
                 average = Math.round(average / (blendedData.data.length * 0.25));
                 if (average > 10) {
                     data = {confidence: average, spot: spotzzz[r]};
-                    // makeRed()
-                    // console.log("data", data)
-                    // if(data.spot.el.indexOf(hotSpots)){
-                        console.log('HELLO')
-                        // document.getElementById("left-box").style.backgroundColor = "red";
-                    // }
+                    console.log('HELLO')
                 }
             }
         }
-        // function makeRed(){
-        //     document.getElementById("left-box").style.backgroundColor = "red";
-        // }
-
     }
    
 
