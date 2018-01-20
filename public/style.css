@@ -1,0 +1,131 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding:0;
+}
+
+/*-------- MAIN.JS ---------*/
+
+#main-container{
+    border:2px  solid black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    height: 100vh;
+    background-color: lightskyblue;
+}
+
+/*------- CHARACTERSTREAM.JS -------*/
+
+#character-stream-container{
+    border:2px solid black;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    height: 70px;
+    width: 90%;
+    background-color:whitesmoke;
+    margin-top:5px;
+}
+
+/*-------- VIDEO.JS --------*/
+
+#video-container{
+    /* border:2px solid red; */
+    position: relative;
+}
+
+video{
+    border:2px solid purple;
+    display: none;
+}
+
+
+#canvas-source {
+	width: 100%;
+}
+
+#canvas-source {
+    border:2px solid yellow;
+	position: absolute;
+	left: 0;
+    top: 0;
+}
+
+#canvas-blended {
+    border:2px solid red;
+	display: none;
+	position: absolute;
+	bottom: 0;
+	right: 0;
+    opacity: 0;
+    z-index: 1000;
+}
+
+/*-------- MESSAGEFIELD.JS ------*/
+
+#message-field-container{
+    border:2px solid black;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    height: 50px;
+    width: 65%;
+    background-color:whitesmoke;
+    margin-top:5px;
+    border-radius: 5px;
+}
+
+
+/*-------------------------- TEST ------------------------*/
+
+
+/*--------BOXES---------*/
+
+#hot-spots {
+	border:2px solid red;
+	position: absolute;
+	/* display: none; */
+    height: 480px;
+    width: 640px;
+    top:0;
+}
+
+#left-box{
+    border:2px solid white;
+    width: 175px;
+    height: 70%;
+    position: absolute;
+    /* top: 0; */
+}
+
+#right-box{
+    border:2px solid white;
+    width: 175px;
+    height: 70%;
+    position: absolute;
+    /* top: 0; */
+    right: 0;
+}
+
+#top-box{
+    border:2px solid white;
+    width: 160px;
+    height: 15%;
+    position: absolute;
+    /* top: 0; */
+    right: 240px;
+    left: 240px;
+}
+
+#testing{
+    width:160px;
+    height:40px;
+    background-color:red;
+    position: absolute;
+    left:8;
+    top:2020;
+}
