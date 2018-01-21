@@ -9,20 +9,15 @@ export default class Video extends Component {
     componentDidMount(){
         var lastImageData;
         var canvasSource = document.getElementById("canvas-source")
-        // console.log(canvasSource,"^^^^^^^")
         var canvasBlended = document.getElementById("canvas-blended")
-        // console.log(canvasBlended, "&&&&&&&")
         var contextSource = canvasSource.getContext('2d');
-        // console.log("contextSource", contextSource)
         var contextBlended = canvasBlended.getContext('2d');
-        // console.log("contextBlended", contextBlended)
 
         var video = document.getElementById("video")
         var content = document.getElementById("video-container");
         var canvases = document.getElementsByClassName("canvas")
     
         // mirror video
-
 	    contextSource.translate(canvasSource.width, 0);
 	    contextSource.scale(-1, 1);
 
@@ -179,25 +174,34 @@ export default class Video extends Component {
                 average = Math.round(average / (blendedData.data.length * 0.25));
                 if (average > 10) {
                     data = {confidence: average, spot: spotzzz[r]};
-                    if(data.spot.el.id === "right-box"){
+                    var id = data.spot.el.id
+                    if(id === "right-box"){
                         console.log("RIGHT BOX")
+                        // setRandomColor(id)
                     }
-                    if(data.spot.el.id === "left-box"){
+                    if(id === "left-box"){
                         console.log("LEFT BOX")
+                        // setRandomColor(id)
                     }
-                    if(data.spot.el.id === "top-box"){
+                    if(id === "top-box"){
                         console.log("TOP BOX")
+                        // setRandomColor(id)
                     }
                 }
             }
         }
 
-        function makeRed(id){
-            document.getElementById(`${id}`).style.backgroundColor = 'red';
+        function getRandomColor() {
+            var letters = '0123456789ABCDEF';
+            var color = '#';
+            for (var i = 0; i < 6; i++) {
+              color += letters[Math.floor(Math.random() * 16)];
+            }
+            return color;
         }
-
-        function makeNormal(id){
-            document.getElementById(`${id}`).style.backgroundColor = 'none';
+        
+        function setRandomColor(id) {
+            document.getElementById(`${id}`).style.backgroundColor = getRandomColor();
         }
     }
    

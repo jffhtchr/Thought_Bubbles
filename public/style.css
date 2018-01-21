@@ -7,7 +7,7 @@
 /*-------- MAIN.JS ---------*/
 
 #main-container{
-    border:2px  solid black;
+    /* border:2px  solid black; */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -19,15 +19,40 @@
 /*------- CHARACTERSTREAM.JS -------*/
 
 #character-stream-container{
-    border:2px solid black;
+    /* border:2px solid black; */
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
     height: 70px;
     width: 90%;
-    background-color:whitesmoke;
+    /* background-color:whitesmoke; */
     margin-top:5px;
+}
+
+#selected-character{
+    border: 3px solid red;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50px;
+    width: 30px;
+    font-size: 1.5em;
+}
+
+#characters{
+    /* border:2px solid black; */
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 70vw;
+    background-color: whitesmoke
+}
+
+button{
+    height:30px;
+    width: 70px;
 }
 
 /*-------- VIDEO.JS --------*/
@@ -38,7 +63,7 @@
 }
 
 video{
-    border:2px solid purple;
+    /* border:2px solid purple; */
     display: none;
 }
 
@@ -48,14 +73,14 @@ video{
 }
 
 #canvas-source {
-    border:2px solid yellow;
+    /* border:2px solid yellow; */
 	position: absolute;
 	left: 0;
     top: 0;
 }
 
 #canvas-blended {
-    border:2px solid red;
+    /* border:2px solid red; */
 	display: none;
 	position: absolute;
 	bottom: 0;
@@ -67,7 +92,7 @@ video{
 /*-------- MESSAGEFIELD.JS ------*/
 
 #message-field-container{
-    border:2px solid black;
+    /* border:2px solid black; */
     display: flex;
     flex-direction: row;
     justify-content: space-around;
@@ -86,7 +111,7 @@ video{
 /*--------BOXES---------*/
 
 #hot-spots {
-	border:2px solid red;
+	/* border:2px solid red; */
 	position: absolute;
 	/* display: none; */
     height: 480px;
@@ -119,13 +144,4 @@ video{
     /* top: 0; */
     right: 240px;
     left: 240px;
-}
-
-#testing{
-    width:160px;
-    height:40px;
-    background-color:red;
-    position: absolute;
-    left:8;
-    top:2020;
 }

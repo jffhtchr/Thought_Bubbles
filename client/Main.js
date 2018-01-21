@@ -10,10 +10,10 @@ export default class Main extends Component {
     return (
  
     <div id="main-container">
-
-        <CharacterStream />
+    
+        <MessageField />   
         <Video />
-        <MessageField />
+        <CharacterStream />
 
     </div>
 
