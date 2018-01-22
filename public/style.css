@@ -2,6 +2,7 @@
     box-sizing: border-box;
     margin: 0;
     padding:0;
+    font-family: Helvetica, sans-serif;
 }
 
 /*-------- MAIN.JS ---------*/
@@ -13,7 +14,8 @@
     align-items: center;
     justify-content: space-around;
     height: 100vh;
-    background-color: lightskyblue;
+    /* background-color: lightskyblue; */
+    background-color: lightseagreen;
 }
 
 /*------- CHARACTERSTREAM.JS -------*/
@@ -36,23 +38,28 @@
     align-items: center;
     justify-content: center;
     height: 50px;
-    width: 30px;
+    width: 40px;
     font-size: 1.5em;
 }
 
 #characters{
     /* border:2px solid black; */
+    border-radius: 5px;    
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
     width: 70vw;
-    background-color: whitesmoke
+    background-color: whitesmoke;
+    overflow-x: hidden;
 }
 
 button{
+    border: none;
     height:30px;
     width: 70px;
+    border-radius: 5px;
+    background-color: whitesmoke
 }
 
 /*-------- VIDEO.JS --------*/
@@ -74,6 +81,7 @@ video{
 
 #canvas-source {
     /* border:2px solid yellow; */
+    border-radius: 5px;
 	position: absolute;
 	left: 0;
     top: 0;
@@ -120,7 +128,9 @@ video{
 }
 
 #left-box{
-    border:2px solid white;
+    border-right:2px solid whitesmoke;
+    border-bottom:2px solid whitesmoke;
+    border-bottom-right-radius: 5px;
     width: 175px;
     height: 70%;
     position: absolute;
@@ -128,20 +138,24 @@ video{
 }
 
 #right-box{
-    border:2px solid white;
+    border-left:2px solid whitesmoke;
+    border-bottom:2px solid whitesmoke;
+    border-bottom-left-radius: 5px;
     width: 175px;
     height: 70%;
     position: absolute;
-    /* top: 0; */
     right: 0;
 }
 
 #top-box{
-    border:2px solid white;
+    border-left:2px solid whitesmoke;
+    border-right:2px solid whitesmoke;
+    border-bottom:2px solid whitesmoke;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
     width: 160px;
     height: 15%;
     position: absolute;
-    /* top: 0; */
     right: 240px;
     left: 240px;
 }

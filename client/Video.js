@@ -176,15 +176,15 @@ export default class Video extends Component {
                     data = {confidence: average, spot: spotzzz[r]};
                     var id = data.spot.el.id
                     if(id === "right-box"){
-                        console.log("RIGHT BOX")
+                        // console.log("RIGHT BOX")
                         // setRandomColor(id)
                     }
                     if(id === "left-box"){
-                        console.log("LEFT BOX")
+                        // console.log("LEFT BOX")
                         // setRandomColor(id)
                     }
                     if(id === "top-box"){
-                        console.log("TOP BOX")
+                        // console.log("TOP BOX")
                         // setRandomColor(id)
                     }
                 }

@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
+import { connect } from 'react-redux';
+import { setCurrentCharacter, currentCharacter } from './redux/characterStreamReducer'
 
-export default class CharacterStream extends Component {
+class CharacterStream extends Component {
     constructor(props){
         super(props)
         this.state = {
-            letters: ["A","B","C","D","E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"],
+            letters: [" ", "A","B","C","D","E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"],
             selectedCharacter: "M"
         }
         this.shiftLeft = this.shiftLeft.bind(this);
@@ -19,7 +21,6 @@ export default class CharacterStream extends Component {
         arr.push(arr.shift());
         var selectedCharacter = arr[Math.floor((arr.length-1)/2)];
         this.setState({letters: arr, selectedCharacter: selectedCharacter})
-        this.forceUpdate() 
     }
 
     shiftLeft(){
@@ -28,10 +29,7 @@ export default class CharacterStream extends Component {
         arr.unshift(arr.pop());
         var selectedCharacter = arr[Math.floor((arr.length-1)/2)];
         this.setState({letters: arr, selectedCharacter: selectedCharacter})
-        this.forceUpdate() 
     }
-
-
 
 
     render() {
@@ -45,7 +43,7 @@ export default class CharacterStream extends Component {
         <div id="characters">
             <div id="left-characters">
                 {this.state.letters.filter((letter, i)=>{
-                    if(i<((this.state.letters.length/2)-1)){
+                    if(i<(Math.floor(this.state.letters.length/2))){
                         return(
                             <p>{letter}</p>
                         )
@@ -57,7 +55,7 @@ export default class CharacterStream extends Component {
 
             <div id="right-characters">
                 {this.state.letters.filter((letter, i)=>{
-                    if(i>((this.state.letters.length/2)-1)){
+                    if(i>(Math.floor(this.state.letters.length/2))){
                         return(
                             <p>{letter}</p>
                         )
@@ -67,9 +65,27 @@ export default class CharacterStream extends Component {
         </div>
 
         <button id="right-button" onClick={this.shiftRight}>Shift Right</button>
+        <button id="new-button" onClick={()=>this.props.selectCharacter(this.state.selectedCharacter)}>Select Character</button>
     </div>
 
 
     );
     }
 }
+
+function mapStateToProps(storeState){
+   return{
+      currentCharacter: storeState.characterStream
+   }
+}
+
+function mapDispatchToProps(dispatch){
+    return{
+        selectCharacter(character){
+            dispatch(setCurrentCharacter(character))
+        }
+    }
+}
+
+const CharacterStreamContainer = connect(mapStateToProps, mapDispatchToProps)(CharacterStream)
+export default CharacterStreamContainer;
