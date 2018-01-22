@@ -1,12 +1,23 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
+import { connect } from 'react-redux';
+import { setCurrentCharacter } from './redux/characterStreamReducer';
+import { setAlphabetArray } from './redux/alphabetReducer';
+import { selectCurrentCharacter } from './redux/selectedLetterReducer';
 
-export default class Video extends Component {
+class Video extends Component {
     constructor(props){
-    super(props)
+        super(props)
+
+        this.state = {
+            letters: [" ", "A","B","C","D","E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"],
+            selectedCharacter: "M"
+        }
+
     }
 
     componentDidMount(){
+        
         var lastImageData;
         var canvasSource = document.getElementById("canvas-source")
         var canvasBlended = document.getElementById("canvas-blended")
@@ -127,11 +138,28 @@ export default class Video extends Component {
             });
         }
 
+        var props = this.props;
+        var propsShiftLeft = this.props.shiftLeft;
+        var propsShiftRight = this.props.shiftRight;
+        var propsShiftUp = this.props.shiftUp;
+        
+        function shiftL(){
+            propsShiftLeft(props)
+        }
+
+        function shiftR(){
+            propsShiftRight(props)
+        }
+
+        function shiftUp(){
+            propsShiftUp(props)
+        }
+
         function checkAreas() {
             var topBox = document.getElementById('top-box').getBoundingClientRect();
             var leftBox = document.getElementById('left-box').getBoundingClientRect();;
             var rightBox = document.getElementById('right-box').getBoundingClientRect();
-    
+        
             var hotSpots = [
                 {
                     el:  document.getElementById('left-box'),
@@ -177,15 +205,19 @@ export default class Video extends Component {
                     var id = data.spot.el.id
                     if(id === "right-box"){
                         // console.log("RIGHT BOX")
-                        // setRandomColor(id)
+                        setRandomColor(id)
+                        shiftR()
+                        // this.props.shiftRight()
                     }
-                    if(id === "left-box"){
+                    else if(id === "left-box"){
                         // console.log("LEFT BOX")
-                        // setRandomColor(id)
+                        setRandomColor(id)
+                        shiftL()
                     }
-                    if(id === "top-box"){
+                    else if(id === "top-box"){
                         // console.log("TOP BOX")
-                        // setRandomColor(id)
+                        setRandomColor(id)
+                        shiftUp()
                     }
                 }
             }
@@ -207,6 +239,33 @@ export default class Video extends Component {
    
 
     // ---------------- METHODS --------------- //
+    
+    componentDidUpdate(){
+        if(this.state.updated === false ){
+            var newMessage = this.state.message + this.props.currentCharacter
+            if(newMessage !== "[object Object]")
+            this.setState({
+                message: newMessage,
+                updated: true
+            })  
+            
+        }   
+        }
+
+    componentWillReceiveProps(){
+        this.setState({
+            updated: false
+        }) 
+    }
+
+    handleSendMessage(){
+        alert(`Message: "${this.state.message}" sent!`)
+        this.setState({
+            message:""
+        })
+    }
+    
+    
     success(stream) {
         var video = document.getElementById('video');
         video.srcObject = stream;
@@ -240,6 +299,46 @@ export default class Video extends Component {
     }
 }
 
+function mapStateToProps(storeState){
+    return{
+       currentCharacter: storeState.characterStream,
+       currentAlphabet: storeState.alphabet,
+       chosenLetter: storeState.chosenLetter
+    }
+ }
+ 
+ function mapDispatchToProps(dispatch, props){
+    var arr = props.currentAlphabet;
+     return{
+         selectCharacter(character){
+             dispatch(setCurrentCharacter(character))
+         },
+         shiftRight(props){
+            var arr = props.currentAlphabet;
+            arr.slice(0, 3).join(",");
+            arr.push(arr.shift());
+            var selectedCharacter = arr[Math.floor((arr.length-1)/2)];
+            dispatch(setCurrentCharacter(selectedCharacter))
+            dispatch(setAlphabetArray(arr))
+        },
+        shiftLeft(props){
+            var arr = props.currentAlphabet;
+            arr.unshift(arr.pop());
+            var selectedCharacter = arr[Math.floor((arr.length-1)/2)];
+            dispatch(setCurrentCharacter(selectedCharacter))
+            dispatch(setAlphabetArray(arr))
+        },
+        shiftUp(props){
+            var arr = props.currentAlphabet;
+            let pickedLetter = arr[Math.floor((arr.length-1)/2)];
+            dispatch(selectCurrentCharacter(pickedLetter))
+        }
+       
+     }
+ }
+
+const VideoContainer = connect(mapStateToProps, mapDispatchToProps)((Video))
+export default VideoContainer;
 
 
 

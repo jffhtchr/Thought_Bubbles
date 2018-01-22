@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { connect } from 'react-redux';
+import { selectCurrentCharacter } from './redux/selectedLetterReducer';
 
 
 class MessageField extends Component {
@@ -9,7 +10,8 @@ class MessageField extends Component {
 
         this.state = {
             message:"",
-            updated: false
+            updated: false,
+            letter:""
         }
         this.handleSendMessage = this.handleSendMessage.bind(this)
     }
@@ -44,14 +46,14 @@ class MessageField extends Component {
         })
     }
 
-    render() {
-    return (
+    render()  {
+    return(
 
     <div id="top-component">
         <div id="message-field-container">
             <p>{this.state.message}</p>
         </div>
-        <button onClick ={this.handleSendMessage}>Send Message!</button>
+        <button onClick ={this.handleSendMessage}>Send!</button>
     </div>    
 
     );
@@ -60,17 +62,10 @@ class MessageField extends Component {
 
 function mapStateToProps(storeState){
     return{
-       currentCharacter: storeState.characterStream
+       currentCharacter: storeState.characterStream,
+       chosenLetter: storeState.chosenLetter
     }
  }
- 
- function mapDispatchToProps(dispatch){
-     return{
-         selectCharacter(character){
-             dispatch(setCurrentCharacter(character))
-         }
-     }
- }
 
-const MessageFieldContainer = connect(mapStateToProps, mapDispatchToProps)(MessageField)
+const MessageFieldContainer = connect(mapStateToProps)(MessageField)
 export default MessageFieldContainer;

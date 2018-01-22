@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { connect } from 'react-redux';
-import { setCurrentCharacter, currentCharacter } from './redux/characterStreamReducer'
+import { setCurrentCharacter } from './redux/characterStreamReducer';
+import { setAlphabetArray } from './redux/alphabetReducer';
+import { browserHistory } from 'react-router'; 
 
 class CharacterStream extends Component {
     constructor(props){
@@ -15,7 +17,7 @@ class CharacterStream extends Component {
     }
 
     shiftRight(){
-        console.log('shifted Right!')
+        // console.log('shifted Right!')
         var arr = this.state.letters;
         arr.slice(0, 3).join(",");
         arr.push(arr.shift());
@@ -24,7 +26,7 @@ class CharacterStream extends Component {
     }
 
     shiftLeft(){
-        console.log('shifted Left!')
+        // console.log('shifted Left!')
         var arr = this.state.letters;
         arr.unshift(arr.pop());
         var selectedCharacter = arr[Math.floor((arr.length-1)/2)];
@@ -38,7 +40,7 @@ class CharacterStream extends Component {
  
     <div id="character-stream-container">
 
-        <button id="left-button" onClick={this.shiftLeft}>Shift Left</button>
+        <button id="left-button" onClick={this.shiftLeft}>Left</button>
         
         <div id="characters">
             <div id="left-characters">
@@ -64,8 +66,8 @@ class CharacterStream extends Component {
             </div>
         </div>
 
-        <button id="right-button" onClick={this.shiftRight}>Shift Right</button>
-        <button id="new-button" onClick={()=>this.props.selectCharacter(this.state.selectedCharacter)}>Select Character</button>
+        <button id="right-button" onClick={this.shiftRight}>Right</button>
+        <button id="new-button" onClick={()=>this.props.selectCharacter(this.state.selectedCharacter)}>Select</button>
     </div>
 
 
@@ -75,9 +77,11 @@ class CharacterStream extends Component {
 
 function mapStateToProps(storeState){
    return{
-      currentCharacter: storeState.characterStream
+      currentCharacter: storeState.characterStream,
+      currentAlphabet: storeState.alphabet
    }
 }
+
 
 function mapDispatchToProps(dispatch){
     return{

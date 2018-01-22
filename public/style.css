@@ -2,7 +2,10 @@
     box-sizing: border-box;
     margin: 0;
     padding:0;
-    font-family: Helvetica, sans-serif;
+    font-family: 'Gloria Hallelujah', cursive;
+    font-size:1em;
+
+    /* font-family: Helvetica, sans-serif; */
 }
 
 /*-------- MAIN.JS ---------*/
@@ -14,8 +17,22 @@
     align-items: center;
     justify-content: space-around;
     height: 100vh;
-    /* background-color: lightskyblue; */
     background-color: lightseagreen;
+}
+
+#title{
+    /* border:2px solid black; */
+    text-align: center;
+    color: black;
+    font-size: 2.9em;
+    /* margin-top:5px; */
+    letter-spacing: .1em;
+    font-family: 'Gloria Hallelujah', cursive;
+    font-weight: 600;
+}
+#title p {
+    font-size: .4em;
+    color:red;
 }
 
 /*------- CHARACTERSTREAM.JS -------*/
@@ -28,8 +45,8 @@
     align-items: center;
     height: 70px;
     width: 100%;
-    margin-top:5px;
-
+    overflow-x: hidden;
+    overflow-y: hidden;
 }
 
 #selected-character{
@@ -53,17 +70,20 @@
     background-color: whitesmoke;
     overflow-x: hidden;
     margin: 5px;
-
 }
 
 button{
     border: none;
     height:30px;
-    width: 70px;
+    width: 100px;
     border-radius: 5px;
+    display: flex;
     background-color: whitesmoke;
     margin: 5px;
-
+    font-size: 100%;
+    text-align: center;
+    justify-content: center;
+    word-wrap: break-word;
 }
 
 /*-------- VIDEO.JS --------*/
@@ -71,6 +91,7 @@ button{
 #video-container{
     /* border:2px solid red; */
     position: relative;
+    margin: 5px;
 }
 
 video{
@@ -112,7 +133,6 @@ video{
     height: 50px;
     width: 65%;
     background-color:whitesmoke;
-    margin-top:5px;
     border-radius: 5px;
     margin: 5px;
 }
@@ -147,7 +167,6 @@ video{
     width: 175px;
     height: 70%;
     position: absolute;
-    /* top: 0; */
 }
 
 #right-box{

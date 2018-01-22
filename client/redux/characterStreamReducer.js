@@ -1,4 +1,3 @@
-
 //ACTION TYPES
 const CURRENT_CHARACTER = "CURRENT_CHARACTER"
 
@@ -8,14 +7,6 @@ export function setCurrentCharacter(character){
       type: CURRENT_CHARACTER,
       currentCharacter: character
   }
-}
-
-//THUNKS
-
-export function currentCharacter(character){
-    return function thunk(dispatch){
-       return dispatch(setCurrentCharacter(character))
-    }
 }
 
 //REDUCER
