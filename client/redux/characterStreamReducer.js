@@ -1,4 +1,3 @@
-// import axios from 'axios';
 
 //ACTION TYPES
 const CURRENT_CHARACTER = "CURRENT_CHARACTER"
@@ -19,18 +18,6 @@ export function currentCharacter(character){
     }
 }
 
-// export function fetchCampuses(){
-//    return function thunk(dispatch){
-//        return axios.get(`/api/campuses/`)
-//        .then(response => response.data)
-//        .then(campuses => {
-//           dispatch(gotCampusesFromServer(campuses))
-//        })
-//        .catch(console.error)
-//    }  
-// }
-
-
 //REDUCER
 const intitialState = {};
 
@@ -45,9 +32,3 @@ function characterStreamReducer(state = intitialState, action){
 
 export default characterStreamReducer;
 
-
-
-
-// function characterStreamReducer (state = {}, action) {
-//     return state;
-//   }

@@ -24,12 +24,12 @@
     /* border:2px solid black; */
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
     height: 70px;
-    width: 90%;
-    /* background-color:whitesmoke; */
+    width: 100%;
     margin-top:5px;
+
 }
 
 #selected-character{
@@ -52,6 +52,8 @@
     width: 70vw;
     background-color: whitesmoke;
     overflow-x: hidden;
+    margin: 5px;
+
 }
 
 button{
@@ -59,7 +61,9 @@ button{
     height:30px;
     width: 70px;
     border-radius: 5px;
-    background-color: whitesmoke
+    background-color: whitesmoke;
+    margin: 5px;
+
 }
 
 /*-------- VIDEO.JS --------*/
@@ -110,6 +114,15 @@ video{
     background-color:whitesmoke;
     margin-top:5px;
     border-radius: 5px;
+    margin: 5px;
+}
+
+#top-component{
+    /* border:2px solid red; */
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
 }
 
 

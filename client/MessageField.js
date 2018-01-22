@@ -11,6 +11,7 @@ class MessageField extends Component {
             message:"",
             updated: false
         }
+        this.handleSendMessage = this.handleSendMessage.bind(this)
     }
 
     componentDidMount(){
@@ -28,7 +29,6 @@ class MessageField extends Component {
                 updated: true
             })  
         }      
-        console.log("updated:", this.state)
     }
 
     componentWillReceiveProps(){
@@ -37,12 +37,22 @@ class MessageField extends Component {
         }) 
     }
 
+    handleSendMessage(){
+        alert(`Message: "${this.state.message}" sent!`)
+        this.setState({
+            message:""
+        })
+    }
+
     render() {
     return (
- 
-    <div id="message-field-container">
-       <p>{this.state.message}</p>
-    </div>
+
+    <div id="top-component">
+        <div id="message-field-container">
+            <p>{this.state.message}</p>
+        </div>
+        <button onClick ={this.handleSendMessage}>Send Message!</button>
+    </div>    
 
     );
     }
