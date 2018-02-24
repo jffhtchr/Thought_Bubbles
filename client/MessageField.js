@@ -16,27 +16,39 @@ class MessageField extends Component {
         this.handleSendMessage = this.handleSendMessage.bind(this)
     }
 
-    componentDidMount(){
-        this.setState({
-            updated: false
-        })
-    }
-
-    componentDidUpdate(){
-        if(this.state.updated === false ){
-            var newMessage = this.state.message + this.props.currentCharacter
+    componentWillMount(){
+            if(this.state.updated === false ){
+            var newMessage = this.state.message + this.props.chosenLetter
             if(newMessage !== "[object Object]")
             this.setState({
                 message: newMessage,
                 updated: true
             })  
-        }      
+        }  
+    
     }
 
-    componentWillReceiveProps(){
+
+    componentDidMount(){
+        console.log('COMPONENT MOUNTED@:',this.state )
         this.setState({
             updated: false
-        }) 
+        })
+    }
+
+    
+
+    componentWillReceiveProps(){
+        if(this.state.updated === false ){
+            var newMessage = this.state.message + this.props.chosenLetter
+            // if(newMessage !== "[object Object]")
+            console.log("%^%^%^%^%^%^%^%^%^")
+            this.setState({
+                message: newMessage,
+                updated: true
+            })  
+        } 
+
     }
 
     handleSendMessage(){
@@ -46,18 +58,27 @@ class MessageField extends Component {
         })
     }
 
-    render()  {
-    return(
-
+    render(props)  {
+        
+        var current = [this.props.chosenLetter]
+      if(current !== ""){  
+        console.log("PROPOPOPS:", this.props)
+    return (
+    
     <div id="top-component">
         <div id="message-field-container">
-            <p>{this.state.message}</p>
+        {this.state.message}
+
+            {/* <p>{current.map(index=>{
+                // console.log("INDEX", index)
+                return index
+            })}</p> */}
         </div>
         <button onClick ={this.handleSendMessage}>Send!</button>
     </div>    
 
     );
-    }
+    }}
 }
 
 function mapStateToProps(storeState){

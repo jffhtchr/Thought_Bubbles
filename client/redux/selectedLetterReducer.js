@@ -10,12 +10,12 @@ export function selectCurrentCharacter(character){
 }
 
 //REDUCER
-const intitialState = {};
+const intitialState = "";
 
 function selectedLetterReducer(state = intitialState, action){
     switch(action.type){
         case SELECT_CURRENT_CHARACTER:
-            return action.currentCharacter     
+            return state + action.currentCharacter     
         default: 
             return state; 
     }
