@@ -5,8 +5,6 @@ import ReactDOM from 'react-dom';
 import MessageFieldContainer from "./MessageField";
 import VideoContainer from './Video';
 import CharacterSelectorContainer from "./CharacterSelector";
-import CharacterStream from "./CharacterStream";
-
 
 export default class Main extends Component {
     render() {
@@ -18,7 +16,6 @@ export default class Main extends Component {
                 <MessageFieldContainer /> 
                 <VideoContainer />  
                 <CharacterSelectorContainer />
-                {/* <CharacterStream /> */}
             </div>
         );
     }

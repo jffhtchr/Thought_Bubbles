@@ -11,12 +11,6 @@ import { selectCurrentCharacter } from './redux/messageReducer';
 class Video extends Component {
     constructor(props){
         super(props)
-
-        this.state = {
-            letters: [" ", "A","B","C","D","E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"],
-            selectedCharacter: "M"
-        }
-
     }
 
     componentDidMount(){
@@ -210,7 +204,7 @@ class Video extends Component {
 
                 // calculate an average between of the color values of the hot spot area
                 average = Math.round(average / (blendedData.data.length * 0.25));
-                if (average > 20) {
+                if (average > 10) {
                     data = {confidence: average, spot: spotzzz[r]};
                     var id = data.spot.el.id
 
@@ -275,14 +269,6 @@ class Video extends Component {
             updated: false
         }) 
     }
-
-    handleSendMessage(){
-        alert(`Message: "${this.state.message}" sent!`)
-        this.setState({
-            message:""
-        })
-    }
-    
     
     success(stream) {
         var video = document.getElementById('video');
