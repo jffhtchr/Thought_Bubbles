@@ -158,6 +158,10 @@ class Video extends Component {
             propsShiftUp(props)
         }
 
+        let upTriggered = false;
+        let leftTriggered = false;
+        let rightTriggered = false;
+
         function checkAreas() {
             var topBox = document.getElementById('top-box').getBoundingClientRect();
             var leftBox = document.getElementById('left-box').getBoundingClientRect();;
@@ -189,34 +193,50 @@ class Video extends Component {
 
             // loop over the note area
             var data;
+        
             for (var r=0; r<spotzzz.length; ++r) {
                 // var blendedData = contextBlended.getImageData(1/1*r*video.width, 0, video.width, 100);
                 var blendedData = contextBlended.getImageData(spotzzz[r].x, spotzzz[r].y, spotzzz[r].width, spotzzz[r].height);
                 // console.log("blendedData: ", blendedData)
                 var i = 0;
                 var average = 0;
+
                 // loop over the pixels
                 while (i < (blendedData.data.length * 0.25)) {
                     // make an average between the color channel
                     average += (blendedData.data[i*4] + blendedData.data[i*4+1] + blendedData.data[i*4+2]) / 3;
                     ++i;
                 }
-                // calculate an average between of the color values of the note area
+
+                // calculate an average between of the color values of the hot spot area
                 average = Math.round(average / (blendedData.data.length * 0.25));
-                if (average > 10) {
+                if (average > 20) {
                     data = {confidence: average, spot: spotzzz[r]};
                     var id = data.spot.el.id
-                    if(id === "right-box"){
+
+                    if(id === "right-box" && rightTriggered === false){
                         setRandomColor(id)
                         shiftR()
+                        rightTriggered = true; 
+                        setTimeout(()=>{
+                            rightTriggered = false
+                        },1000)
                     }
-                    else if(id === "left-box"){
+                    else if(id === "left-box" && leftTriggered === false){
                         setRandomColor(id)
                         shiftL()
+                        leftTriggered = true; 
+                        setTimeout(()=>{
+                            leftTriggered = false
+                        },1000)
                     }
-                    else if(id === "top-box"){
+                    if(id === "top-box" && upTriggered === false){                    
                         setRandomColor(id)
                         shiftUp()
+                        upTriggered = true; 
+                        setTimeout(()=>{
+                            upTriggered = false
+                        },1000)
                     }
                 }
             }
