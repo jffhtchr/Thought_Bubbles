@@ -6,11 +6,13 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import alphabet from './alphabetReducer';
 import motionEventLeft from './motionEventLeftReducer';
 import motionEventRight from './motionEventRightReducer';
+import message from './messageReducer';
 
 const rootReducer = combineReducers({
     alphabet,
     motionEventLeft,
-    motionEventRight
+    motionEventRight,
+    message
 })
 
 const middleware = composeWithDevTools(applyMiddleware(

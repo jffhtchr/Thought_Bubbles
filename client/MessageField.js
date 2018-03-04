@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { connect } from 'react-redux';
-import { selectCurrentCharacter } from './redux/selectedLetterReducer';
-
 
 class MessageField extends Component {
     constructor(props){
@@ -16,71 +14,39 @@ class MessageField extends Component {
         this.handleSendMessage = this.handleSendMessage.bind(this)
     }
 
-    componentWillMount(){
-            if(this.state.updated === false ){
-            var newMessage = this.state.message + this.props.chosenLetter
-            if(newMessage !== "[object Object]")
-            this.setState({
-                message: newMessage,
-                updated: true
-            })  
-        }  
-    
-    }
-
 
     componentDidMount(){
         this.setState({
             updated: false
         })
-    }
-
-    
-
-    componentWillReceiveProps(){
-        if(this.state.updated === false ){
-            var newMessage = this.state.message + this.props.chosenLetter
-            // if(newMessage !== "[object Object]")
-            this.setState({
-                message: newMessage,
-                updated: true
-            })  
-        } 
-
-    }
+    } 
 
     handleSendMessage(){
-        alert(`Message: "${this.state.message}" sent!`)
-        this.setState({
-            message:""
-        })
+        alert(`Message: "${this.props.message}" sent!`)
     }
 
     render(props)  {
-        var current = [this.props.chosenLetter]
+      var current = [this.props.message]
       if(current !== ""){  
         
-    return (
+        return (
     
-    <div id="top-component">
-        <div id="message-field-container">
-        {this.state.message}
+            <div id="top-component">
+                <div id="message-field-container">
+                    <p>{current.map(index=>{
+                        return index
+                        })}</p>
+                </div>
+                <button onClick ={this.handleSendMessage}>Send!</button>
+            </div>    
 
-            <p>{current.map(index=>{
-                return index
-            })}</p>
-        </div>
-        <button onClick ={this.handleSendMessage}>Send!</button>
-    </div>    
-
-    );
+        );
     }}
 }
 
 function mapStateToProps(storeState){
     return{
-       currentCharacter: storeState.characterStream,
-       chosenLetter: storeState.chosenLetter
+       message: storeState.message
     }
  }
 

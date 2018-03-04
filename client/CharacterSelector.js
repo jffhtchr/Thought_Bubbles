@@ -18,14 +18,8 @@ class CharacterSelector extends Component {
     <div id="character-stream-container">
         
         <div id="characters">
-            {this.props.currentAlphabet.map((letter, i)=>{
-                return(
-                    <p key={i}>{letter}</p>
-                )
-            })}
-        </div>
         
-            {/* <div id="left-characters">
+            <div id="left-characters">
                 {this.props.currentAlphabet.filter((letter, i)=>{
                     if(i<(Math.floor(this.props.currentAlphabet.length/2))){
                         return(
@@ -45,8 +39,8 @@ class CharacterSelector extends Component {
                         )
                     }
                 })}
-            </div> */}
-
+            </div>
+            </div>
        
 
     </div>
@@ -61,7 +55,6 @@ function mapStateToProps(storeState){
       currentAlphabet: storeState.alphabet,
       motionEventLeft: storeState.motionEventLeft,
       motionEventRight: storeState.motionEventRight
-
    }
 }
 

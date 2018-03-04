@@ -1,10 +1,10 @@
 //ACTION TYPES
-const SELECT_CURRENT_CHARACTER = "CURRENT_CHARACTER";
+const ADD_CHARACTER_TO_MESSAGE = "ADD_CHARACTER_TO_MESSAGE";
 
 //ACTION CREATORS
 export function selectCurrentCharacter(character){
   return{
-      type: SELECT_CURRENT_CHARACTER,
+      type: ADD_CHARACTER_TO_MESSAGE,
       selectedCharacter: character
   }
 }
@@ -12,14 +12,13 @@ export function selectCurrentCharacter(character){
 //REDUCER
 const intitialState = "";
 
-function selectedLetterReducer(state = intitialState, action){
+function messageReducer(state = intitialState, action){
     switch(action.type){
-        case SELECT_CURRENT_CHARACTER:
+        case ADD_CHARACTER_TO_MESSAGE:
             return state + action.selectedCharacter     
         default: 
             return state; 
     }
 }
 
-export default selectedLetterReducer;
-
+export default messageReducer;

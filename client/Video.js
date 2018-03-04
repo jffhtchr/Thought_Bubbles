@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { setAlphabetArray } from './redux/alphabetReducer';
 import { leftMotionEvent } from './redux/motionEventLeftReducer';
 import { rightMotionEvent } from './redux/motionEventRightReducer';
+import { selectCurrentCharacter } from './redux/messageReducer';
 
 
 class Video extends Component {
@@ -298,19 +299,13 @@ class Video extends Component {
 
 function mapStateToProps(storeState){
     return{
-    //    currentCharacter: storeState.characterStream,
-       currentAlphabet: storeState.alphabet,
-       motionEvents: storeState.motionEvents
-    //    chosenLetter: storeState.chosenLetter
+       message: storeState.message
     }
  }
  
  function mapDispatchToProps(dispatch, props){
      let letters = [" ", "A","B","C","D","E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
      return{
-         selectCharacter(character){
-             dispatch(setCurrentCharacter(character))
-         },
          shiftRight(){
             letters.slice(0, 3).join(",");
             letters.push(letters.shift());
@@ -324,10 +319,9 @@ function mapStateToProps(storeState){
             dispatch(setAlphabetArray(letters))
             dispatch(leftMotionEvent())
         },
-        shiftUp(props){
-            var arr = props.currentAlphabet;
-            let pickedLetter = arr[Math.floor((arr.length-1)/2)];
-            // dispatch(selectCurrentCharacter(pickedLetter))
+        shiftUp(){
+            let pickedLetter = letters[Math.floor((letters.length-1)/2)];
+            dispatch(selectCurrentCharacter(pickedLetter))
         }
      }
  }
