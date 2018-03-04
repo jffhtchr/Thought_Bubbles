@@ -1,19 +1,14 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { connect } from 'react-redux';
-import { setCurrentCharacter } from './redux/characterStreamReducer';
-import { setAlphabetArray } from './redux/alphabetReducer';
 import { browserHistory } from 'react-router'; 
 
 class CharacterSelector extends Component {
     constructor(props){
         super(props)
-        this.state ={
-            letters: this.props.currentAlphabet
-        }
     }
 
-    componentWillReceiveProps(){
+    componentWillReceiveProps(){   
         this.forceUpdate();
     }
 
@@ -23,7 +18,14 @@ class CharacterSelector extends Component {
     <div id="character-stream-container">
         
         <div id="characters">
-            <div id="left-characters">
+            {this.props.currentAlphabet.map((letter, i)=>{
+                return(
+                    <p key={i}>{letter}</p>
+                )
+            })}
+        </div>
+        
+            {/* <div id="left-characters">
                 {this.props.currentAlphabet.filter((letter, i)=>{
                     if(i<(Math.floor(this.props.currentAlphabet.length/2))){
                         return(
@@ -43,9 +45,9 @@ class CharacterSelector extends Component {
                         )
                     }
                 })}
-            </div>
+            </div> */}
 
-        </div>
+       
 
     </div>
 
@@ -56,8 +58,10 @@ class CharacterSelector extends Component {
 
 function mapStateToProps(storeState){
    return{
-      currentCharacter: storeState.characterStream,
-      currentAlphabet: storeState.alphabet
+      currentAlphabet: storeState.alphabet,
+      motionEventLeft: storeState.motionEventLeft,
+      motionEventRight: storeState.motionEventRight
+
    }
 }
 

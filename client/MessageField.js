@@ -30,7 +30,6 @@ class MessageField extends Component {
 
 
     componentDidMount(){
-        console.log('COMPONENT MOUNTED@:',this.state )
         this.setState({
             updated: false
         })
@@ -42,7 +41,6 @@ class MessageField extends Component {
         if(this.state.updated === false ){
             var newMessage = this.state.message + this.props.chosenLetter
             // if(newMessage !== "[object Object]")
-            console.log("%^%^%^%^%^%^%^%^%^")
             this.setState({
                 message: newMessage,
                 updated: true
@@ -59,20 +57,18 @@ class MessageField extends Component {
     }
 
     render(props)  {
-        
         var current = [this.props.chosenLetter]
       if(current !== ""){  
-        console.log("PROPOPOPS:", this.props)
+        
     return (
     
     <div id="top-component">
         <div id="message-field-container">
         {this.state.message}
 
-            {/* <p>{current.map(index=>{
-                // console.log("INDEX", index)
+            <p>{current.map(index=>{
                 return index
-            })}</p> */}
+            })}</p>
         </div>
         <button onClick ={this.handleSendMessage}>Send!</button>
     </div>    

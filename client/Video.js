@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { connect } from 'react-redux';
-import { setCurrentCharacter } from './redux/characterStreamReducer';
+
 import { setAlphabetArray } from './redux/alphabetReducer';
-import { selectCurrentCharacter } from './redux/selectedLetterReducer';
+import { leftMotionEvent } from './redux/motionEventLeftReducer';
+import { rightMotionEvent } from './redux/motionEventRightReducer';
+
 
 class Video extends Component {
     constructor(props){
@@ -204,18 +206,14 @@ class Video extends Component {
                     data = {confidence: average, spot: spotzzz[r]};
                     var id = data.spot.el.id
                     if(id === "right-box"){
-                        // console.log("RIGHT BOX")
                         setRandomColor(id)
                         shiftR()
-                        // this.props.shiftRight()
                     }
                     else if(id === "left-box"){
-                        // console.log("LEFT BOX")
                         setRandomColor(id)
                         shiftL()
                     }
                     else if(id === "top-box"){
-                        // console.log("TOP BOX")
                         setRandomColor(id)
                         shiftUp()
                     }
@@ -247,10 +245,9 @@ class Video extends Component {
             this.setState({
                 message: newMessage,
                 updated: true
-            })  
-            
+            })      
         }   
-        }
+    }
 
     componentWillReceiveProps(){
         this.setState({
@@ -301,39 +298,37 @@ class Video extends Component {
 
 function mapStateToProps(storeState){
     return{
-       currentCharacter: storeState.characterStream,
+    //    currentCharacter: storeState.characterStream,
        currentAlphabet: storeState.alphabet,
-       chosenLetter: storeState.chosenLetter
+       motionEvents: storeState.motionEvents
+    //    chosenLetter: storeState.chosenLetter
     }
  }
  
  function mapDispatchToProps(dispatch, props){
-    var arr = props.currentAlphabet;
+     let letters = [" ", "A","B","C","D","E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
      return{
          selectCharacter(character){
              dispatch(setCurrentCharacter(character))
          },
-         shiftRight(props){
-            var arr = props.currentAlphabet;
-            arr.slice(0, 3).join(",");
-            arr.push(arr.shift());
-            var selectedCharacter = arr[Math.floor((arr.length-1)/2)];
-            dispatch(setCurrentCharacter(selectedCharacter))
-            dispatch(setAlphabetArray(arr))
+         shiftRight(){
+            letters.slice(0, 3).join(",");
+            letters.push(letters.shift());
+            var selectedCharacter = letters[Math.floor((letters.length-1)/2)];
+            dispatch(setAlphabetArray(letters))
+            dispatch(rightMotionEvent())
         },
-        shiftLeft(props){
-            var arr = props.currentAlphabet;
-            arr.unshift(arr.pop());
-            var selectedCharacter = arr[Math.floor((arr.length-1)/2)];
-            dispatch(setCurrentCharacter(selectedCharacter))
-            dispatch(setAlphabetArray(arr))
+        shiftLeft(){
+            letters.unshift(letters.pop());
+            var selectedCharacter = letters[Math.floor((letters.length-1)/2)];
+            dispatch(setAlphabetArray(letters))
+            dispatch(leftMotionEvent())
         },
         shiftUp(props){
             var arr = props.currentAlphabet;
             let pickedLetter = arr[Math.floor((arr.length-1)/2)];
-            dispatch(selectCurrentCharacter(pickedLetter))
+            // dispatch(selectCurrentCharacter(pickedLetter))
         }
-       
      }
  }
 

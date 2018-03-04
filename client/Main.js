@@ -1,25 +1,25 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 
-import CharacterStream from "./CharacterStream";
-import CharacterSelectorContainer from "./CharacterSelector";
-import VideoContainer from './Video';
+// ---- components ---- //
 import MessageFieldContainer from "./MessageField";
+import VideoContainer from './Video';
+import CharacterSelectorContainer from "./CharacterSelector";
+import CharacterStream from "./CharacterStream";
+
 
 export default class Main extends Component {
     render() {
-
-    return (
-        <div id="main-container">
-            <div id="title">
-                <h1>Jeff Text</h1>
-                <p>by Jeff</p>
-            </div>    
-            <MessageFieldContainer /> 
-            <VideoContainer />  
-            <CharacterSelectorContainer />
-            {/* <CharacterStream /> */}
-        </div>
-    );
+        return (
+            <div id="main-container">
+                <div id="title">
+                    <h1>Thought Bubbles</h1>
+                </div>    
+                <MessageFieldContainer /> 
+                <VideoContainer />  
+                <CharacterSelectorContainer />
+                {/* <CharacterStream /> */}
+            </div>
+        );
     }
 }
