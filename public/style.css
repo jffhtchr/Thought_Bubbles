@@ -56,8 +56,9 @@
     align-items: center;
     justify-content: center;
     height: 50px;
-    width: 40px;
+    min-width: 50px;
     font-size: 1.5em;
+    padding:10px;
 }
 
 #characters{
@@ -71,6 +72,29 @@
     overflow-x: hidden;
     margin: 5px;
 }
+
+#right-characters{
+    /* border:1px solid yellow; */
+   padding: 5px;
+   width: 47.5%;
+   display: flex;
+}
+
+#left-characters{
+    /* border:1px solid green; */
+    padding:5px;
+    width: 47.5%;
+    display: flex;
+    justify-content: flex-end;
+ }
+
+ #left-characters > p{
+    padding:5px;
+ }
+
+ #right-characters > p{
+    padding:5px;
+ }
 
 .letterz  {
     color:red;
@@ -160,8 +184,13 @@ video{
     height: 480px;
     width: 640px;
     top:0;
-    opacity: 0.7;
+}
 
+.boxes {
+    display: flex;
+    justify-content: center;
+    opacity: 0.7;
+    /* color:white; */
 }
 
 #left-box{

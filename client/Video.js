@@ -292,9 +292,9 @@ class Video extends Component {
         <canvas className="canvas" id="canvas-blended" width="640" height="480"></canvas>
 
         <div id='hot-spots'>
-            <div id="left-box"></div>
-            <div id="top-box"></div>
-            <div id="right-box"></div>
+            <div className = "boxes" id="left-box">Scroll Left</div>
+            <div className = "boxes" id="top-box">Select</div>
+            <div className = "boxes" id="right-box">Scroll Right</div>
         </div>
         
     </div>

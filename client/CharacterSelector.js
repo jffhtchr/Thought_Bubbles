@@ -20,10 +20,10 @@ class CharacterSelector extends Component {
         <div id="characters">
         
             <div id="left-characters">
-                {this.props.currentAlphabet.filter((letter, i)=>{
+                {this.props.currentAlphabet.map((letter, i)=>{
                     if(i<(Math.floor(this.props.currentAlphabet.length/2))){
-                        return(
-                            <div className="letterz">{letter}</div>
+                        return( 
+                            <p>{letter}</p>
                         )
                     }
                 })}
@@ -32,7 +32,7 @@ class CharacterSelector extends Component {
             <div id="selected-character">{this.props.currentAlphabet[Math.floor(this.props.currentAlphabet.length/2)]}</div>
 
             <div id="right-characters">
-                {this.props.currentAlphabet.filter((letter, i)=>{
+                {this.props.currentAlphabet.map((letter, i)=>{
                     if(i>(Math.floor(this.props.currentAlphabet.length/2))){
                         return(
                             <p>{letter}</p>
