@@ -17,7 +17,7 @@
     align-items: center;
     justify-content: space-around;
     height: 100vh;
-    background-color: lightseagreen;
+    /* background-color: lightseagreen; */
 }
 
 #title{
@@ -47,6 +47,7 @@
     width: 100%;
     overflow-x: hidden;
     overflow-y: hidden;
+
 }
 
 #selected-character{
@@ -60,29 +61,33 @@
 }
 
 #characters{
-    /* border:2px solid black; */
+    border:1px solid black;
     border-radius: 5px;    
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    width: 70vw;
-    background-color: whitesmoke;
+    width: 100%;
     overflow-x: hidden;
     margin: 5px;
 }
 
+.letterz  {
+    color:red;
+    margin: 5px;
+}
 button{
-    border: none;
+    border: 1px solid black;
     height:30px;
     width: 100px;
     border-radius: 5px;
     display: flex;
-    background-color: whitesmoke;
+    background-color: lightgreen;
     margin: 5px;
     font-size: 100%;
     text-align: center;
     justify-content: center;
+    align-items: center;
     word-wrap: break-word;
 }
 
@@ -125,16 +130,16 @@ video{
 /*-------- MESSAGEFIELD.JS ------*/
 
 #message-field-container{
-    /* border:2px solid black; */
+    border:1px solid black;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
     height: 50px;
     width: 65%;
-    background-color:whitesmoke;
     border-radius: 5px;
     margin: 5px;
+    overflow: hidden;
 }
 
 #top-component{
@@ -146,9 +151,6 @@ video{
 }
 
 
-/*-------------------------- TEST ------------------------*/
-
-
 /*--------BOXES---------*/
 
 #hot-spots {
@@ -158,6 +160,8 @@ video{
     height: 480px;
     width: 640px;
     top:0;
+    opacity: 0.7;
+
 }
 
 #left-box{

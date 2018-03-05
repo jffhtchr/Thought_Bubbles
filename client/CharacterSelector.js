@@ -23,7 +23,7 @@ class CharacterSelector extends Component {
                 {this.props.currentAlphabet.filter((letter, i)=>{
                     if(i<(Math.floor(this.props.currentAlphabet.length/2))){
                         return(
-                            <p>{letter}</p>
+                            <div className="letterz">{letter}</div>
                         )
                     }
                 })}
