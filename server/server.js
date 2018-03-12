@@ -7,6 +7,10 @@ const socketio = require('socket.io');
 
 app.use(express.static(path.join(__dirname, '../public')))
 
+app.use('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '..', 'public/index.html'))
+})
+
 const server = app.listen(PORT, function () {
       console.log(`Listening on port ${PORT}`);
 });
