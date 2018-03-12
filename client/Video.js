@@ -334,6 +334,9 @@ function mapStateToProps(storeState){
             }else if(pickedLetter === 'SEND!'){
                 dispatch(sendMessage())
                 dispatch(clearCurrentMessage())
+                letters.push(letters.shift());
+                dispatch(setAlphabetArray(letters))
+                dispatch(rightMotionEvent())
             }else{
                 dispatch(selectCurrentCharacter(pickedLetter))
             }

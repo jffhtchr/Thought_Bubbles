@@ -43,23 +43,20 @@ class Chat extends Component {
 
     render(){
         return (
-            <div className="container">
-                <div className="row">
-                    <div className="col-4">
-                        <div className="card">
-                            <div className="card-body">
-                                <div className="card-title">Chat</div>
-                                <hr/>
-                                <div className="messages">
-                                {this.state.messages.map((message,i) => {
-                                    return (
-                                        <div key={i}>{message.author}: {message.message}</div>
-                                    )
-                                })}
-                                </div>
+            <div id="chat-wrapper">
+                <div className="card-title">
+                    Chat 
+                </div>
+                <div className="messages">
+                    {this.state.messages.map((message,i) => {
+                        return (
+                            <div key={i}>
+                            <span className="author">{message.author}</span> :
+                            <br/>
+                            {message.message}
                             </div>
-                        </div>
-                    </div>
+                        )
+                    })}
                 </div>
             </div>
         );

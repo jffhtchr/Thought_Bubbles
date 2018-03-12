@@ -11,7 +11,9 @@ export default class Main extends Component {
     render() {
         return (
             <div id = "wrapper">
-               <ChatContainer />
+                <div id = "chat-container">
+                    <ChatContainer />
+                </div>    
                 <div id="main-container">
                     <div id="title">
                         <h1>Thought Bubbles</h1>
