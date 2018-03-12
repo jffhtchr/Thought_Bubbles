@@ -7,12 +7,14 @@ import alphabet from './alphabetReducer';
 import motionEventLeft from './motionEventLeftReducer';
 import motionEventRight from './motionEventRightReducer';
 import message from './messageReducer';
+import sendMessage from './sendMessageReducer';
 
 const rootReducer = combineReducers({
     alphabet,
     motionEventLeft,
     motionEventRight,
-    message
+    message,
+    sendMessage
 })
 
 const middleware = composeWithDevTools(applyMiddleware(

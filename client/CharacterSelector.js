@@ -23,7 +23,7 @@ class CharacterSelector extends Component {
                 {this.props.currentAlphabet.map((letter, i)=>{
                     if(i<(Math.floor(this.props.currentAlphabet.length/2))){
                         return( 
-                            <p>{letter}</p>
+                            <p key={i}>{letter}</p>
                         )
                     }
                 })}
@@ -35,7 +35,7 @@ class CharacterSelector extends Component {
                 {this.props.currentAlphabet.map((letter, i)=>{
                     if(i>(Math.floor(this.props.currentAlphabet.length/2))){
                         return(
-                            <p>{letter}</p>
+                            <p key={i}>{letter}</p>
                         )
                     }
                 })}

@@ -5,7 +5,9 @@ import { connect } from 'react-redux';
 import { setAlphabetArray } from './redux/alphabetReducer';
 import { leftMotionEvent } from './redux/motionEventLeftReducer';
 import { rightMotionEvent } from './redux/motionEventRightReducer';
-import { selectCurrentCharacter, clearLastCharacter } from './redux/messageReducer';
+import { selectCurrentCharacter, clearLastCharacter, clearCurrentMessage } from './redux/messageReducer';
+import { sendMessage } from "./redux/sendMessageReducer";
+
 
 
 class Video extends Component {
@@ -305,12 +307,13 @@ class Video extends Component {
 
 function mapStateToProps(storeState){
     return{
-       message: storeState.message
+       message: storeState.message,
+       sendMessage: storeState.sendMessage
     }
  }
  
  function mapDispatchToProps(dispatch, props){
-     let letters = [" ", "A","B","C","D","E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "DELETE"]
+     let letters = [" ", "A","B","C","D","E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z","CLEAR", "BACKSPACE", "SEND!"]
      return{
          shiftRight(){
             letters.push(letters.shift());
@@ -324,8 +327,13 @@ function mapStateToProps(storeState){
         },
         shiftUp(){
             let pickedLetter = letters[Math.ceil((letters.length-1)/2)];
-            if(pickedLetter === 'DELETE'){
+            if(pickedLetter === "CLEAR"){
+                dispatch(clearCurrentMessage())
+            }else if(pickedLetter === 'BACKSPACE'){
                 dispatch(clearLastCharacter());
+            }else if(pickedLetter === 'SEND!'){
+                dispatch(sendMessage())
+                dispatch(clearCurrentMessage())
             }else{
                 dispatch(selectCurrentCharacter(pickedLetter))
             }

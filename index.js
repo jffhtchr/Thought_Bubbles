@@ -7,6 +7,7 @@ import { connect } from "react-redux";
 import store from './client/store';
 import Main from './client/Main';
 
+var socket = io(window.location.origin);
 
 ReactDOM.render(
     <Provider store={store}>
@@ -14,3 +15,4 @@ ReactDOM.render(
     </Provider>,
     document.getElementById('app') 
 );
+

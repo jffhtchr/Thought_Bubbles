@@ -24,6 +24,7 @@ export function clearLastCharacter(){
     }
 }
 
+
 //REDUCER
 const intitialState = "";
 
@@ -35,7 +36,7 @@ function messageReducer(state = intitialState, action){
             return action.message   
         case BACKSPACE: 
             let newState = state.slice(0,-1);
-            return newState 
+            return newState
         default: 
             return state; 
     }

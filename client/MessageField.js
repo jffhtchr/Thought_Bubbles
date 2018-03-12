@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { connect } from 'react-redux';
 import { clearCurrentMessage } from './redux/messageReducer';
+import { sendMessage } from './redux/sendMessageReducer';
 
 class MessageField extends Component {
     constructor(props){
@@ -9,7 +10,10 @@ class MessageField extends Component {
         this.state = {
             firstUpdate: 0
         }
-        this.handleSendMessage = this.handleSendMessage.bind(this)
+    }
+
+    componentWillReceiveProps(){   
+        this.forceUpdate();
     }
 
     componentDidUpdate(){
@@ -19,11 +23,6 @@ class MessageField extends Component {
             this.setState({firstUpdate:counter})
             this.props.clearMessage();
         }
-    }
-
-    handleSendMessage(){
-        alert(`Message: "${this.props.message}" sent!`)
-        this.props.clearMessage();
     }
 
     render(props)  {
@@ -38,7 +37,6 @@ class MessageField extends Component {
                         }   
                         })}</p>
                 </div>
-                <button onClick ={this.handleSendMessage}>Send!</button>
             </div>    
 
         );
