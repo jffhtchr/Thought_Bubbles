@@ -1,11 +1,11 @@
 {
-  "name": "jeff_a_thon",
+  "name": "thought_bubbles",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server",
+    "start": "node ./server/server.js",
     "start-dev": "webpack -w &amp; nodemon ./server/server.js"
   },
   "dependencies": {

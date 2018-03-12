@@ -2,12 +2,12 @@
     box-sizing: border-box;
     margin: 0;
     padding:0;
-    font-family: 'Gloria Hallelujah', cursive;
-    font-size:1em;
+    font-size:1.05em;
 }
 
 #wrapper {
     /* border:2px solid red; */
+    font-family: 'Sue Ellen Francisco', cursive;
     height:100vh;
     display:flex;
     justify-content: center;
@@ -74,15 +74,8 @@
     /* border:2px solid black; */
     text-align: center;
     color: black;
-    font-size: 2.9em;
-    /* margin-top:5px; */
-    letter-spacing: .1em;
-    font-family: 'Gloria Hallelujah', cursive;
-    font-weight: 600;
-}
-#title p {
-    font-size: .4em;
-    color:red;
+    font-size: 2.5em;
+    letter-spacing: .2em;
 }
 
 /*------- CHARACTERSTREAM.JS -------*/
@@ -121,8 +114,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 50px;
-    font-size: 1.5em;
+    height: 65px;
+    font-size: 1.3em;
     padding:10px;
 }
 
