@@ -4,10 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "deploy": "script/deploy",
+    "build-client": "webpack",
+    "build-client-watch": "webpack -w",
+    "deploy": "./script/deploy",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node ./server/server.js",
-    "start-dev": "webpack -w &amp; nodemon ./server/server.js"
+    "start": "node server/server.js",
+    "start-dev": "NODE_ENV='development' npm run build-client-watch & npm run start-server",
+    "start-server": "nodemon server/server.js -e html,js,scss --ignore public"
   },
   "dependencies": {
     "axios": "^0.17.1",
