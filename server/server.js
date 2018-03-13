@@ -48,9 +48,9 @@ const startListening = () => {
 });
 
 }
-if (require.main === module) {
+// if (require.main === module) {
     createApp()
     startListening()
-} else {
-  createApp()
-}
+// } else {
+//   createApp()
+// }
