@@ -5,5 +5,5 @@ Thought_Bubbles is a real-time messaging application that allows a user to send 
 
 Thought_Bubbles was created using React-Redux, JS Motion Capture, Socket.io, Node.js and Express.js.
 
-![Screenshot of Thought_Bubbles 1](https://raw.githubusercontent.com/jffhtchr/Thought_Bubbles/picTwo.png)
-![Screenshot of Thought_Bubbles 2](https://raw.githubusercontent.com/jffhtchr/Thought_Bubbles/picOne.png)
+![Screenshot of Thought_Bubbles 1](https://raw.githubusercontent.com/jffhtchr/Thought_Bubbles/master/picTwo.png)
+![Screenshot of Thought_Bubbles 2](https://raw.githubusercontent.com/jffhtchr/Thought_Bubbles/master/picOne.png)
