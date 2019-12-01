@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
 import { connect } from 'react-redux';
-import { browserHistory } from 'react-router'; 
 
 class CharacterSelector extends Component {
     constructor(props){
@@ -15,11 +13,11 @@ class CharacterSelector extends Component {
     render() {
     return (
  
-    <div id="character-stream-container">
+    <div className="character-stream-container">
         
-        <div id="characters">
+        <div className="characters">
         
-            <div id="left-characters">
+            <div className="left-characters">
                 {this.props.currentAlphabet.map((letter, i)=>{
                     if(i<(Math.floor(this.props.currentAlphabet.length/2))){
                         return( 
@@ -29,9 +27,9 @@ class CharacterSelector extends Component {
                 })}
             </div>
 
-            <div id="selected-character">{this.props.currentAlphabet[Math.floor(this.props.currentAlphabet.length/2)]}</div>
+            <div className="selected-character">{this.props.currentAlphabet[Math.floor(this.props.currentAlphabet.length/2)]}</div>
 
-            <div id="right-characters">
+            <div className="right-characters">
                 {this.props.currentAlphabet.map((letter, i)=>{
                     if(i>(Math.floor(this.props.currentAlphabet.length/2))){
                         return(

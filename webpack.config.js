@@ -1,8 +1,12 @@
+const path = require('path');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+
+
 module.exports = {
     entry: './index.js', // assumes your entry point is the index.js in the root of your project folder
     output: {
-      path: __dirname,
-      filename: './public/bundle.js' 
+      path: path.resolve(__dirname, 'public'),
+      filename: 'bundle.js'
     },
     devtool: 'source-map',
     module: {
@@ -14,7 +18,24 @@ module.exports = {
           options: {
             presets: ['react', 'env'] // if you aren't using 'babel-preset-env', then omit the 'env'
           }
-        }
+        }, 
+        {
+          test: /\.scss$/,
+          use: [
+            "style-loader",
+            MiniCssExtractPlugin.loader,
+            "css-loader",
+            "sass-loader"
+          ]
+        },
       ]
+    },  
+    plugins: [
+      new MiniCssExtractPlugin({
+        filename: 'style.css',
+      })
+    ],
+    watchOptions: {
+      ignored: ['node_modules']
     }
   };

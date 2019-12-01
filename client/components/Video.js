@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
 import { connect } from 'react-redux';
 
-import { setAlphabetArray } from './redux/alphabetReducer';
-import { leftMotionEvent } from './redux/motionEventLeftReducer';
-import { rightMotionEvent } from './redux/motionEventRightReducer';
-import { selectCurrentCharacter, clearLastCharacter, clearCurrentMessage } from './redux/messageReducer';
-import { sendMessage } from "./redux/sendMessageReducer";
+import { setAlphabetArray } from '../redux/reducers/alphabetReducer';
+import { leftMotionEvent } from '../redux/reducers/motionEventLeftReducer';
+import { rightMotionEvent } from '../redux/reducers/motionEventRightReducer';
+import { selectCurrentCharacter, clearLastCharacter, clearCurrentMessage } from '../redux/reducers/messageReducer';
+import { sendMessage } from "../redux/reducers/sendMessageReducer";
 
 
 

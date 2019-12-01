@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import io from "socket.io-client";
-import { sendMessage } from './redux/sendMessageReducer';
+import { sendMessage } from '../redux/reducers/sendMessageReducer';
 
 
 class Chat extends Component {
@@ -43,15 +43,15 @@ class Chat extends Component {
 
     render(){
         return (
-            <div id="chat-wrapper">
-                <div className="card-title">
+            <div className="chat-wrapper">
+                <div className="chat__title">
                     Chat 
                 </div>
-                <div className="messages">
+                <div className="chat__messages">
                     {this.state.messages.map((message,i) => {
                         return (
                             <div key={i}>
-                            <span className="author">{message.author}</span> :
+                            <span className="chat__author">{message.author}</span> :
                             <br/>
                             {message.message}
                             </div>

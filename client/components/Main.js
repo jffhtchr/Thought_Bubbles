@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
 
 // ---- components ---- //
 import MessageFieldContainer from "./MessageField";
@@ -10,19 +9,18 @@ import ChatContainer from './Chat';
 export default class Main extends Component {
     render() {
         return (
-            <div id = "wrapper">
-                <div id = "chat-container">
+            <div className="app__wrapper">
+                <div className="chat-container">
                     <ChatContainer />
                 </div>    
-                <div id="main-container">
-                    <div id="title">
+                <div className="main-container">
+                    <div className="main__title">
                         <h1>Thought Bubbles</h1>
                     </div>
                     <MessageFieldContainer /> 
                     <VideoContainer />  
                     <CharacterSelectorContainer />
                 </div>
-                
             </div>
         );
     }

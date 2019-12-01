@@ -3,11 +3,11 @@ import thunkMiddleware from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension';
 
 //reducers
-import alphabet from './alphabetReducer';
-import motionEventLeft from './motionEventLeftReducer';
-import motionEventRight from './motionEventRightReducer';
-import message from './messageReducer';
-import sendMessage from './sendMessageReducer';
+import alphabet from './reducers/alphabetReducer';
+import motionEventLeft from './reducers/motionEventLeftReducer';
+import motionEventRight from './reducers/motionEventRightReducer';
+import message from './reducers/messageReducer';
+import sendMessage from './reducers/sendMessageReducer';
 
 const rootReducer = combineReducers({
     alphabet,
@@ -20,7 +20,5 @@ const rootReducer = combineReducers({
 const middleware = composeWithDevTools(applyMiddleware(
     thunkMiddleware
 ))
-
-const store = createStore(rootReducer, middleware)  
   
 export default rootReducer;

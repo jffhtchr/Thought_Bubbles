@@ -1,0 +1,78 @@
+
+.character-stream-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 70px;
+    width: 100%;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    font-size: 1.5em;
+
+}
+
+.characters{
+    border-radius: 5px;    
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    overflow-x: hidden;
+    margin: 5px;
+    margin-left: 100px;
+    margin-right:100px;
+    background-color:whitesmoke;
+}
+
+.selected-character{
+    border: 3px solid red;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 65px;
+    font-size: 1.3em;
+    padding:10px;
+}
+
+.right-characters{
+   padding: 5px;
+   max-width: 47.5%;
+   display: flex;
+   justify-content: flex-start;
+}
+
+.left-characters{
+    padding:5px;
+    max-width: 47.5%;
+    display: flex;
+    justify-content: flex-end;
+ }
+
+ .left-characters > p{
+    padding:7px;
+ }
+
+ .right-characters > p{
+    padding:7px;
+ }
+
+// .letterz  {
+//     color:red;
+//     margin: 5px;
+// }
+// button{
+//     border: 1px solid black;
+//     height:30px;
+//     width: 100px;
+//     border-radius: 5px;
+//     display: flex;
+//     background-color: lightgreen;
+//     margin: 5px;
+//     font-size: 100%;
+//     text-align: center;
+//     justify-content: center;
+//     align-items: center;
+//     word-wrap: break-word;
+// }

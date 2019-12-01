@@ -1,13 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { render } from 'react-dom';
-import { HashRouter as Router, Route, Switch } from 'react-router-dom';
 import { Provider } from 'react-redux';
-import { connect } from "react-redux"; 
-import store from './client/store';
-import Main from './client/Main';
+import store from './client/redux/store';
+import Main from './client/components/Main';
+import style from './client/stylesheets/index.scss';
 
-var socket = io(window.location.origin);
+const socket = io(window.location.origin);
 
 ReactDOM.render(
     <Provider store={store}>

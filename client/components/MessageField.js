@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { connect } from 'react-redux';
-import { clearCurrentMessage } from './redux/messageReducer';
-import { sendMessage } from './redux/sendMessageReducer';
+import { clearCurrentMessage } from '../redux/reducers/messageReducer';
 
 class MessageField extends Component {
     constructor(props){
@@ -29,8 +28,8 @@ class MessageField extends Component {
       var current = [this.props.message]
       if(current){  
         return (
-            <div id="top-component">
-                <div id="message-field-container">
+            <div className="message-field-container">
+                <div className="message-field">
                     <p>{current.map(index=>{
                         if(this.state.firstUpdate === 3){
                             return index
